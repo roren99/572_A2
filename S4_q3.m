@@ -1,3 +1,5 @@
+load('lab2_3.mat')
+
 curr_classifier = 1;
 
 % 20 rounds, first 5 classifier for each round

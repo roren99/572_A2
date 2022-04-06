@@ -1,3 +1,5 @@
+load('lab2_3.mat')
+
 curr_classifier = 1;
 
 while curr_classifier <= 3
