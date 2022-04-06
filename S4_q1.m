@@ -21,7 +21,6 @@ while curr_classifier <= 3
         size_a = size(a_data,1);
         size_b = size(b_data,1);
         
-        % generate a random number
         a_idx = randi(size_a);
         b_idx = randi(size_b);
         
@@ -46,7 +45,6 @@ while curr_classifier <= 3
         % go back to step 2 if there are misclassified points.
         loop_condition = (n_aB ~= 0 && n_bA ~= 0);
        
-        % successful! let's save this data.
         if ~loop_condition
             discriminant_points = [discriminant_points; a_rand b_rand];
             errors = [errors; n_aB n_bA]; 
@@ -59,7 +57,6 @@ while curr_classifier <= 3
         end
     end
     
-    % Define points
     XX = [a(:,1); b(:,1)];
     YY = [a(:,2); b(:,2)];
     xmin = min(XX);
@@ -67,19 +64,16 @@ while curr_classifier <= 3
     xmax = max(XX);
     ymax = max(YY);
     
-    % Make 1d grid positions
     step = 1;
     x1 = xmin:step:xmax;
     x2 = ymin:step:ymax;
     
-    % Make 2D coordinates grid
     [X1, X2] = meshgrid(x1, x2);
     classes = zeros(length(x1)*length(x2),1);
     XGrid = [X1(:) X2(:)];
     
     max_discriminants = size(discriminant_points, 1);
     
-    % loop thru every point in the grid
     for i = 1:length(XGrid)
         j = 1;
         while true
@@ -107,11 +101,9 @@ while curr_classifier <= 3
         end
     end
    
-    % now, plot
     figure(curr_classifier)
     hold on
 
-    % set axes
     xlabel('x1') 
     ylabel('x2')
     title('Data sets a and b with Sequential Classifier Boundary')
@@ -120,7 +112,7 @@ while curr_classifier <= 3
     x2_len = length(x2);
     x1_len = length(x1);
     z = reshape(classes, x2_len, x1_len);
-    contour(xx1,xx2,z)
+    contour(X1,X2,z)
     legend('Data set "a"','Data set "b"', 'Sequential Classifier Boundary')
 
     curr_classifier = curr_classifier + 1;
