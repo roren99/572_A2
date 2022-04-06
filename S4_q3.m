@@ -45,7 +45,7 @@ while curr_classifier <= 20
         
         if ~loop_condition
             if n_aB == 0 && n_bA == 0 
-                correct_pts = (size(b_copy,1)-size(bA,1)) + (size(a_copy,1)-size(aB,1));
+                correct_pts = (size(b_data,1)-size(bA,1)) + (size(a_data,1)-size(aB,1));
                 errors = [errors; correct_pts]; 
                 a_data = aB;
                 b_data = bA;
